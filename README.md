@@ -1,8 +1,8 @@
 # GoByte Core staging tree 0.17
 
-| CI     | master                                                                                                                                 | develop                                                                                                                                  |
-| ------ | -------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| Gitlab | [![Build Status](https://gitlab.com/gobytecoin/gobyte/badges/master/pipeline.svg)](https://gitlab.com/gobytecoin/gobyte/-/tree/master) | [![Build Status](https://gitlab.com/gobytecoin/gobyte/badges/develop/pipeline.svg)](https://gitlab.com/gobytecoin/gobyte/-/tree/develop) |
+| CI     | master                                                                                                                                    | develop                                                                                                                                     |
+| ------ | ----------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| Gitlab | [![pipeline status](https://gitlab.com/gobytecoin/gobyte/badges/master/pipeline.svg)](https://gitlab.com/gobytecoin/gobyte/-/tree/master) | [![pipeline status](https://gitlab.com/gobytecoin/gobyte/badges/develop/pipeline.svg)](https://gitlab.com/gobytecoin/gobyte/-/tree/develop) |
 
 https://www.gobyte.network
 

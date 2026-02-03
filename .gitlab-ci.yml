@@ -40,6 +40,7 @@ builder-image:
     OSX_SDK: "10.11"
     MAKEJOBS: -j4
   before_script:
+    - git config --global --add safe.directory $CI_PROJECT_DIR
     - echo HOST=$HOST
     - |
       if [ "$HOST" = "x86_64-apple-darwin14" ]; then
