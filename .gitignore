@@ -150,7 +150,7 @@ make
 cmake-build-debug
 
 # clang-check
-*.plist
+#*.plist
 
 dist/
 
