@@ -70,6 +70,7 @@ builder-image:
 .base-template:
   image: $CI_REGISTRY_IMAGE:builder-$CI_COMMIT_REF_SLUG
   before_script:
+    - git config --global --add safe.directory $CI_PROJECT_DIR
     - export CACHE_DIR=$CI_PROJECT_DIR/cache
     - echo BUILD_TARGET=$BUILD_TARGET
     - source ./ci/matrix.sh
