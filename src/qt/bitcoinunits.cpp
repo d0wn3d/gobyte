@@ -19,10 +19,10 @@ BitcoinUnits::BitcoinUnits(QObject *parent):
 QList<BitcoinUnits::Unit> BitcoinUnits::availableUnits()
 {
     QList<BitcoinUnits::Unit> unitlist;
-    unitlist.append(DASH);
-    unitlist.append(mDASH);
-    unitlist.append(uDASH);
-    unitlist.append(duffs);
+    unitlist.append(GBX);
+    unitlist.append(mGBX);
+    unitlist.append(uGBX);
+    unitlist.append(gobits);
     return unitlist;
 }
 
@@ -30,10 +30,10 @@ bool BitcoinUnits::valid(int unit)
 {
     switch(unit)
     {
-    case DASH:
-    case mDASH:
-    case uDASH:
-    case duffs:
+    case GBX:
+    case mGBX:
+    case uGBX:
+    case gobits:
         return true;
     default:
         return false;
@@ -46,10 +46,10 @@ QString BitcoinUnits::name(int unit)
     {
         switch(unit)
         {
-            case DASH: return QString("DASH");
-            case mDASH: return QString("mDASH");
-            case uDASH: return QString::fromUtf8("μDASH");
-            case duffs: return QString("duffs");
+            case GBX: return QString("GBX");
+            case mGBX: return QString("mGBX");
+            case uGBX: return QString::fromUtf8("μGBX");
+            case gobits: return QString("gobits");
             default: return QString("???");
         }
     }
@@ -57,10 +57,10 @@ QString BitcoinUnits::name(int unit)
     {
         switch(unit)
         {
-            case DASH: return QString("tDASH");
-            case mDASH: return QString("mtDASH");
-            case uDASH: return QString::fromUtf8("μtDASH");
-            case duffs: return QString("tduffs");
+            case GBX: return QString("tGBX");
+            case mGBX: return QString("mGBX");
+            case uGBX: return QString::fromUtf8("μGBX");
+            case gobits: return QString("tgobits");
             default: return QString("???");
         }
     }
@@ -72,10 +72,10 @@ QString BitcoinUnits::description(int unit)
     {
         switch(unit)
         {
-            case DASH: return QString("Dash");
-            case mDASH: return QString("Milli-Dash (1 / 1" THIN_SP_UTF8 "000)");
-            case uDASH: return QString("Micro-Dash (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
-            case duffs: return QString("Ten Nano-Dash (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+            case GBX: return QString("GBX");
+            case mGBX: return QString("Milli-GBX (1 / 1" THIN_SP_UTF8 "000)");
+            case uGBX: return QString("Micro-GBX (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+            case gobits: return QString("Ten Nano-GBX (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
             default: return QString("???");
         }
     }
@@ -83,10 +83,10 @@ QString BitcoinUnits::description(int unit)
     {
         switch(unit)
         {
-            case DASH: return QString("TestDashs");
-            case mDASH: return QString("Milli-TestDash (1 / 1" THIN_SP_UTF8 "000)");
-            case uDASH: return QString("Micro-TestDash (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
-            case duffs: return QString("Ten Nano-TestDash (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+            case GBX: return QString("TestGBX");
+            case mGBX: return QString("Milli-TestGBX (1 / 1" THIN_SP_UTF8 "000)");
+            case uGBX: return QString("Micro-TestGBX (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+            case gobits: return QString("Ten Nano-TestGBX (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
             default: return QString("???");
         }
     }
@@ -96,10 +96,10 @@ qint64 BitcoinUnits::factor(int unit)
 {
     switch(unit)
     {
-    case DASH:  return 100000000;
-    case mDASH: return 100000;
-    case uDASH: return 100;
-    case duffs: return 1;
+    case GBX:  return 100000000;
+    case mGBX: return 100000;
+    case uGBX: return 100;
+    case gobits: return 1;
     default:   return 100000000;
     }
 }
@@ -108,10 +108,10 @@ int BitcoinUnits::decimals(int unit)
 {
     switch(unit)
     {
-    case DASH: return 8;
-    case mDASH: return 5;
-    case uDASH: return 2;
-    case duffs: return 0;
+    case GBX: return 8;
+    case mGBX: return 5;
+    case uGBX: return 2;
+    case gobits: return 0;
     default: return 0;
     }
 }

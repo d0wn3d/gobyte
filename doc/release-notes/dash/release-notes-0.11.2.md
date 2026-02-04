@@ -1,43 +1,36 @@
-0.11.2 Release notes
-====================
+# 0.11.2 Release notes
 
-Dash Core version 0.11.2 is now available from:
+GoByte Core version 0.11.2 is now available from:
 
-  https://dashpay.io/downloads
+https://gobytecoin.io/downloads
 
 Please report bugs using the issue tracker at github:
 
-  https://github.com/darkcoin/darkcoin/issues
+https://github.com/darkcoin/darkcoin/issues
 
-
-Masternode enhancements
------------------------
+## Masternode enhancements
 
 When restarting the client the masternodes will be stored in the datadir in
-*mncache.dat* file (make sure you don't have any wallet with such name or this
+_mncache.dat_ file (make sure you don't have any wallet with such name or this
 functionality will not be available for you)
 
+## Mining and relay policy enhancements
 
-Mining and relay policy enhancements
-------------------------------------
-
-Dash Core's block templates are now for version 3 blocks only, and any
+GoByte Core's block templates are now for version 3 blocks only, and any
 mining software relying on its `getblocktemplate` must be updated in parallel
 to use libblkmaker either version 0.4.2 or any version from 0.5.1 onward. If you
-are solo mining, this will affect you the moment you upgrade Dash Core,
+are solo mining, this will affect you the moment you upgrade GoByte Core,
 which must be done prior to BIP66 achieving its 951/1001 status. If you are
 mining with the stratum mining protocol: this does not affect you. If you are
 mining with the getblocktemplate protocol to a pool: this will affect you at the
 pool operator's discretion, which must be no later than BIP66 achieving its
 951/1001 status.
 
+## BIP 66: strict DER encoding for signatures
 
-BIP 66: strict DER encoding for signatures
-------------------------------------------
-
-Dash Core 0.11.2 implements BIP 66, which introduces block version 3, and a
+GoByte Core 0.11.2 implements BIP 66, which introduces block version 3, and a
 new consensus rule, which prohibits non-DER signatures. Such transactions have
-been non-standard since Dash 0.8, but were technically still permitted
+been non-standard since GoByte 0.8, but were technically still permitted
 inside blocks.
 
 This change breaks the dependency on OpenSSL's signature parsing, and is
@@ -57,18 +50,14 @@ Also compare with [upstream release notes](https://github.com/bitcoin/bitcoin/bl
 
 More info on [BIP 66](https://github.com/bitcoin/bips/blob/master/bip-0066.mediawiki).
 
-
-How to Upgrade
---------------
+## How to Upgrade
 
 If you are running an older version, shut it down. Wait until it has completely
 shut down (which might take a few minutes for older versions), then run the
-installer (on Windows) or just copy over /Applications/Dash-Qt (on Mac) or
-dashd/dash-qt (on Linux).
+installer (on Windows) or just copy over /Applications/GoByte-Qt (on Mac) or
+gobyted/gobyte-qt (on Linux).
 
-
-0.11.2 changelog
-----------------
+## 0.11.2 changelog
 
 - BIP 66 integration
 - Strict DER signatures
@@ -89,9 +78,7 @@ dashd/dash-qt (on Linux).
 - Update Tor documentation
 - Translation updates
 
-
-Credits
---------
+## Credits
 
 Thanks to who contributed to this release, at least:
 

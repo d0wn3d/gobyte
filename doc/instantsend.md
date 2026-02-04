@@ -1,19 +1,21 @@
 ## InstantSend Technical Information
 
 InstantSend has been integrated into the Core Daemon in two ways:
-* "push" notifications (ZMQ and `-instantsendnotify` cmd-line/config option);
-* RPC commands.
+
+- "push" notifications (ZMQ and `-instantsendnotify` cmd-line/config option);
+- RPC commands.
 
 #### ZMQ
 
 When a "Transaction Lock" occurs the hash of the related transaction is broadcasted through ZMQ using both the `zmqpubrawtxlock` and `zmqpubhashtxlock` channels.
 
-* `zmqpubrawtxlock`: publishes the raw transaction when locked via InstantSend
-* `zmqpubhashtxlock`: publishes the transaction hash when locked via InstantSend
+- `zmqpubrawtxlock`: publishes the raw transaction when locked via InstantSend
+- `zmqpubhashtxlock`: publishes the transaction hash when locked via InstantSend
 
-This mechanism has been integrated into Bitcore-Node-Dash which allows for notification to be broadcast through Insight API in one of two ways:
-* WebSocket: [https://github.com/dashpay/insight-api-dash#web-socket-api](https://github.com/dashpay/insight-api-dash#web-socket-api)
-* API: [https://github.com/dashpay/insight-api-dash#instantsend-transactions](https://github.com/dashpay/insight-api-dash#instantsend-transactions)
+This mechanism has been integrated into Bitcore-Node-GoByte which allows for notification to be broadcast through Insight API in one of two ways:
+
+- WebSocket: [https://github.com/gobytecoin/insight-api-gobyte#web-socket-api](https://github.com/gobytecoin/insight-api-gobyte#web-socket-api)
+- API: [https://github.com/gobytecoin/insight-api-gobyte#instantsend-transactions](https://github.com/gobytecoin/insight-api-gobyte#instantsend-transactions)
 
 #### Command line option
 

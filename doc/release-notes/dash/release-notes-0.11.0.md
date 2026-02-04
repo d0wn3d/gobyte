@@ -1,12 +1,10 @@
-0.11.0 Release notes
-====================
+# 0.11.0 Release notes
 
 Darkcoin Core 0.11.0 is forked off the Bitcoin Core 0.9.3. The old darkcoin
 versions 0.10.x were forked from the Litecoin 0.8 tree. The following changes
 are introduced in this major release. This list is compiled from the release
-notes of Bitcoin Core  0.9.0, 0.9.1, 0.9.2, 0.9.2.1, 0.9.3 and was completed
+notes of Bitcoin Core 0.9.0, 0.9.1, 0.9.2, 0.9.2.1, 0.9.3 and was completed
 with the introduced changes to the Darkcoin Core 0.11.0.
-
 
 Darkcoin Core:
 
@@ -31,7 +29,6 @@ Darkcoin Core:
 - Implemented KeyPass integration for CLI, RPC and Qt:
   `keepass`, `keepassport`, `keepasskey`, `keepassid`, `keepassname`
 
-
 Masternodes:
 
 - Improve support for start-many with multi masternode config
@@ -41,7 +38,6 @@ Masternodes:
 - Added masternode support for regtest
 - Randomly sort masternodes before picking next winner
 - Show number of masternodes in debug window
-
 
 Darksend:
 
@@ -53,7 +49,6 @@ Darksend:
 - Added Darksend high precision matching engine
 - Added Darksend balance to `getinfo`
 - Changed maximum rounds of mixing to 16
-
 
 RPC:
 
@@ -92,7 +87,6 @@ RPC:
 - Add check for valid keys in `importprivkey`
 - Disable SSLv3 (in favor of TLS) for the RPC client and server.
 
-
 Command-line options:
 
 - Fix `-printblocktree` output
@@ -100,15 +94,14 @@ Command-line options:
 - New option: -nospendzeroconfchange to never spend unconfirmed change outputs
 - New option: -zapwallettxes to rebuild the wallet's transaction information
 - Rename option '-tor' to '-onion' to better reflect what it does
-- Add '-disablewallet' mode to let dashd run entirely without wallet (when
+- Add '-disablewallet' mode to let gobyted run entirely without wallet (when
   built with wallet)
 - Update default '-rpcsslciphers' to include TLSv1.2
 - make '-logtimestamps' default on and rework help-message
 - RPC client option: '-rpcwait', to wait for server start
 - Remove '-logtodebugger'
-- Allow `-noserver` with dashd
+- Allow `-noserver` with gobyted
 - Make -proxy set all network types, avoiding a connect leak.
-
 
 Block-chain handling and storage:
 
@@ -120,7 +113,6 @@ Block-chain handling and storage:
 - Store orphan blocks in serialized form, to save memory
 - Limit the number of orphan blocks in memory to 750
 - Fix non-standard disconnected transactions causing mempool orphans
-
 
 Protocol and network code:
 
@@ -153,7 +145,6 @@ Protocol and network code:
 - Add some additional logging to give extra network insight
 - Limit the number of new addressses to accumulate
 
-
 Wallet:
 
 - Check redeemScript size does not exceed 520 byte limit
@@ -173,13 +164,11 @@ Wallet:
 - Don't create empty transactions when reading a corrupted wallet
 - Fix rescan to start from beginning after importprivkey
 
-
 Mining:
 
 - Increase default -blockmaxsize/prioritysize to 750K/50K
 - 'getblocktemplate' does not require a key to create a block template
 - Mining code fee policy now matches relay fee policy
-
 
 GUI:
 
@@ -232,7 +221,6 @@ GUI:
 - OS X: Fix darkcoin-qt startup crash when clicking dock icon
 - Linux: Fix Gnome darkcoin: URI handler
 
-
 Validation:
 
 - Log reason for non-standard transaction rejection
@@ -246,7 +234,6 @@ Validation:
 - consensus: guard against openssl's new strict DER checks
 - fail immediately on an empty signature
 - Improve robustness of DER recoding code
-
 
 Build system:
 
@@ -273,7 +260,6 @@ Build system:
 - build: Fix OSX build when using Homebrew and qt5
 - Keep symlinks when copying into .app bundle
 - osx: fix signing to make Gatekeeper happy (again)
-
 
 Miscellaneous:
 

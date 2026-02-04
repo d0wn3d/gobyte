@@ -1,39 +1,38 @@
-Dash Core
-==========
+# GoByte Core
 
-This is the official reference wallet for Dash digital currency and comprises the backbone of the Dash peer-to-peer network. You can [download Dash Core](https://www.dash.org/downloads/) or [build it yourself](#building) using the guides below.
+This is the official reference wallet for GoByte digital currency and comprises the backbone of the GoByte peer-to-peer network. You can [download GoByte Core](https://www.gobyte.network/downloads/) or [build it yourself](#building) using the guides below.
 
-Running
----------------------
-The following are some helpful notes on how to run Dash on your native platform.
+## Running
+
+The following are some helpful notes on how to run GoByte on your native platform.
 
 ### Unix
 
 Unpack the files into a directory and run:
 
-- `bin/dash-qt` (GUI) or
-- `bin/dashd` (headless)
+- `bin/gobyte-qt` (GUI) or
+- `bin/gobyted` (headless)
 
 ### Windows
 
-Unpack the files into a directory, and then run dash-qt.exe.
+Unpack the files into a directory, and then run gobyte-qt.exe.
 
 ### OS X
 
-Drag Dash-Qt to your applications folder, and then run Dash-Qt.
+Drag GoByte-Qt to your applications folder, and then run GoByte-Qt.
 
 ### Need Help?
 
-* See the [Dash documentation](https://docs.dash.org)
-for help and more information.
-* See the [Dash Developer Documentation](https://dash-docs.github.io/) 
-for technical specifications and implementation details.
-* Ask for help on [Dash Nation Discord](http://dashchat.org)
-* Ask for help on the [Dash Forum](https://dash.org/forum)
+- See the [GoByte documentation](https://docs.gobyte.network)
+  for help and more information.
+- See the [GoByte Developer Documentation](https://gobyte-docs.github.io/)
+  for technical specifications and implementation details.
+- Ask for help on [GoByte Nation Discord](http://gobytechat.network)
+- Ask for help on the [GoByte Forum](https://gobyte.network/forum)
 
-Building
----------------------
-The following are developer notes on how to build Dash Core on your native platform. They are not complete guides, but include notes on the necessary libraries, compile flags, etc.
+## Building
+
+The following are developer notes on how to build GoByte Core on your native platform. They are not complete guides, but include notes on the necessary libraries, compile flags, etc.
 
 - [OS X Build Notes](build-osx.md)
 - [Unix Build Notes](build-unix.md)
@@ -41,14 +40,14 @@ The following are developer notes on how to build Dash Core on your native platf
 - [OpenBSD Build Notes](build-openbsd.md)
 - [Gitian Building Guide](gitian-building.md)
 
-Development
----------------------
-The Dash Core repo's [root README](/README.md) contains relevant information on the development process and automated testing.
+## Development
+
+The GoByte Core repo's [root README](/README.md) contains relevant information on the development process and automated testing.
 
 - [Developer Notes](developer-notes.md)
 - [Release Notes](release-notes.md)
 - [Release Process](release-process.md)
-- Source Code Documentation ***TODO***
+- Source Code Documentation **_TODO_**
 - [Translation Process](translation_process.md)
 - [Translation Strings Policy](translation_strings_policy.md)
 - [Travis CI](travis-ci.md)
@@ -59,10 +58,12 @@ The Dash Core repo's [root README](/README.md) contains relevant information on 
 - [Benchmarking](benchmarking.md)
 
 ### Resources
-* Discuss on the [Dash Forum](https://dash.org/forum), in the Development & Technical Discussion board.
-* Discuss on [Dash Nation Discord](http://dashchat.org)
+
+- Discuss on the [GoByte Forum](https://gobyte.network/forum), in the Development & Technical Discussion board.
+- Discuss on [GoByte Nation Discord](http://gobytechat.network)
 
 ### Miscellaneous
+
 - [Assets Attribution](assets-attribution.md)
 - [Files](files.md)
 - [Fuzz-testing](fuzzing.md)
@@ -71,8 +72,8 @@ The Dash Core repo's [root README](/README.md) contains relevant information on 
 - [Init Scripts (systemd/upstart/openrc)](init.md)
 - [ZMQ](zmq.md)
 
-License
----------------------
+## License
+
 Distributed under the [MIT software license](/COPYING).
 This product includes software developed by the OpenSSL Project for use in the [OpenSSL Toolkit](https://www.openssl.org/). This product includes
 cryptographic software written by Eric Young ([eay@cryptsoft.com](mailto:eay@cryptsoft.com)), and UPnP software written by Thomas Bernard.
