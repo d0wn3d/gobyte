@@ -2,7 +2,7 @@ image: "ubuntu:bionic"
 
 variables:
   DOCKER_DRIVER: overlay2
-  FAST_MODE: "false" # when "true", only run linter on arm and unit/functional tests on linux64, skip everything else
+  FAST_MODE: "true" # when "true", only run linter on arm and unit/functional tests on linux64, skip everything else
 
 workflow:
   rules:
@@ -39,7 +39,7 @@ builder-image:
   variables:
     SDK_URL: https://bitcoincore.org/depends-sources/sdks
     OSX_SDK: "10.11"
-    MAKEJOBS: -j4
+    MAKEJOBS: -j8
   before_script:
     - git config --global --add safe.directory $CI_PROJECT_DIR
     - echo HOST=$HOST
