@@ -18,7 +18,7 @@ RUN pip3 install jinja2
 RUN pip3 install flake8
 
 # gobyte-hash
-RUN git clone https://github.com/gobytecoin/gobyte_hash
+RUN git clone https://github.com/D0WN3D/gobyte_hash
 RUN cd gobyte_hash && python3 setup.py install
 
 ARG USER_ID=1000

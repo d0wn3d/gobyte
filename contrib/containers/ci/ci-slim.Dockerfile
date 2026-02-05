@@ -3,11 +3,11 @@ FROM debian:bookworm-slim AS cppcheck-builder
 ARG CPPCHECK_VERSION=2.17.1
 RUN set -ex; \
     apt-get update && apt-get install -y --no-install-recommends \
-        curl \
-        ca-certificates \
-        cmake \
-        make \
-        g++ \
+    curl \
+    ca-certificates \
+    cmake \
+    make \
+    g++ \
     && rm -rf /var/lib/apt/lists/*; \
     echo "Downloading Cppcheck version: ${CPPCHECK_VERSION}"; \
     curl -fL "https://github.com/danmar/cppcheck/archive/${CPPCHECK_VERSION}.tar.gz" -o /tmp/cppcheck.tar.gz; \
@@ -89,7 +89,7 @@ RUN uv pip install --system --break-system-packages \
 ARG GOBYTE_HASH_VERSION=1.4.0
 RUN set -ex; \
     cd /tmp; \
-    git clone --depth 1 --no-tags --branch=${GOBYTE_HASH_VERSION} https://github.com/gobytecoin/gobyte_hash; \
+    git clone --depth 1 --no-tags --branch=${GOBYTE_HASH_VERSION} https://github.com/D0WN3D/gobyte_hash; \
     cd gobyte_hash && uv pip install --system --break-system-packages -r requirements.txt .; \
     cd .. && rm -rf gobyte_hash
 
@@ -98,24 +98,24 @@ RUN set -ex; \
     PYTHON_PATH=$(uv python find ${PYTHON_VERSION}); \
     PYTHON_BIN=$(dirname $PYTHON_PATH); \
     for exe in $PYTHON_BIN/*; do \
-        if [ -x "$exe" ] && [ -f "$exe" ]; then \
-            basename_exe=$(basename $exe); \
-            if [ "$basename_exe" != "python" ] && [ "$basename_exe" != "python3" ] && [ "$basename_exe" != "pip" ] && [ "$basename_exe" != "pip3" ]; then \
-                ln -sf "$exe" "/usr/local/bin/$basename_exe"; \
-            fi; \
-        fi; \
+    if [ -x "$exe" ] && [ -f "$exe" ]; then \
+    basename_exe=$(basename $exe); \
+    if [ "$basename_exe" != "python" ] && [ "$basename_exe" != "python3" ] && [ "$basename_exe" != "pip" ] && [ "$basename_exe" != "pip3" ]; then \
+    ln -sf "$exe" "/usr/local/bin/$basename_exe"; \
+    fi; \
+    fi; \
     done
 
 ARG SHELLCHECK_VERSION=v0.8.0
 RUN set -ex; \
     ARCH_INFERRED="${TARGETARCH}"; \
     if [ -z "${ARCH_INFERRED}" ]; then \
-        ARCH_INFERRED="$(dpkg --print-architecture || true)"; \
+    ARCH_INFERRED="$(dpkg --print-architecture || true)"; \
     fi; \
     case "${ARCH_INFERRED}" in \
-        amd64|x86_64) SC_ARCH="x86_64" ;; \
-        arm64|aarch64) SC_ARCH="aarch64" ;; \
-        *) echo "Unsupported architecture for ShellCheck: ${ARCH_INFERRED}"; exit 1 ;; \
+    amd64|x86_64) SC_ARCH="x86_64" ;; \
+    arm64|aarch64) SC_ARCH="aarch64" ;; \
+    *) echo "Unsupported architecture for ShellCheck: ${ARCH_INFERRED}"; exit 1 ;; \
     esac; \
     curl -fL "https://github.com/koalaman/shellcheck/releases/download/${SHELLCHECK_VERSION}/shellcheck-${SHELLCHECK_VERSION}.linux.${SC_ARCH}.tar.xz" -o /tmp/shellcheck.tar.xz; \
     mkdir -p /opt/shellcheck && tar -xf /tmp/shellcheck.tar.xz -C /opt/shellcheck --strip-components=1 && rm /tmp/shellcheck.tar.xz
