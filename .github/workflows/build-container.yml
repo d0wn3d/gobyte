@@ -60,8 +60,9 @@ jobs:
           file: ${{ inputs.file }}
           push: true
           platforms: linux/amd64
-          tags: |
-            ghcr.io/${{ steps.prepare.outputs.repo }}/${{ inputs.name }}:${{ hashFiles(inputs.file) }}-amd64
+          tags:
+            | # Used {{ hashFiles(inputs.file) }}-amd64 but for some reason it doesnt work for me
+            ghcr.io/${{ steps.prepare.outputs.repo }}/${{ inputs.name }}:${{ steps.prepare.outputs.tag }}-amd64
           cache-from: |
             type=registry,ref=ghcr.io/${{ steps.prepare.outputs.repo }}/${{ inputs.name }}:${{ hashFiles(inputs.file) }}-amd64
             type=registry,ref=ghcr.io/${{ steps.prepare.outputs.repo }}/${{ inputs.name }}:${{ steps.prepare.outputs.tag }}
@@ -104,8 +105,9 @@ jobs:
           file: ${{ inputs.file }}
           push: true
           platforms: linux/arm64
-          tags: |
-            ghcr.io/${{ steps.prepare.outputs.repo }}/${{ inputs.name }}:${{ hashFiles(inputs.file) }}-arm64
+          tags:
+            | # Used {{ hashFiles(inputs.file) }}-amd64 but for some reason it doesnt work for me
+            ghcr.io/${{ steps.prepare.outputs.repo }}/${{ inputs.name }}:${{ steps.prepare.outputs.tag }}-arm64
           cache-from: |
             type=registry,ref=ghcr.io/${{ steps.prepare.outputs.repo }}/${{ inputs.name }}:${{ hashFiles(inputs.file) }}-arm64
             type=registry,ref=ghcr.io/${{ steps.prepare.outputs.repo }}/${{ inputs.name }}:${{ steps.prepare.outputs.tag }}
