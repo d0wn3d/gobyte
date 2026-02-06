@@ -20,7 +20,7 @@ concurrency:
 jobs:
   check-skip:
     name: Check skip conditions
-    runs-on: ubuntu-20.04 # Change from 'ubuntu-latest'
+    runs-on: ubuntu-22.04 # Change from 'ubuntu-latest'
     outputs:
       skip: ${{ steps.skip-check.outputs.skip }}
     steps:
@@ -95,7 +95,7 @@ jobs:
     with:
       build-target: linux64_multiprocess
       container-path: ${{ needs.container.outputs.path }}
-      runs-on: ubuntu-24.04-arm
+      runs-on: ubuntu-22.04-arm # Change from 'ubuntu-latest'
 
   depends-linux64_nowallet:
     name: x86_64-pc-linux-gnu_nowallet
@@ -177,7 +177,7 @@ jobs:
       depends-key: ${{ needs.depends-linux64_multiprocess.outputs.key }}
       depends-host: ${{ needs.depends-linux64_multiprocess.outputs.host }}
       depends-dep-opts: ${{ needs.depends-linux64_multiprocess.outputs.dep-opts }}
-      runs-on: ubuntu-24.04-arm
+      runs-on: ubuntu-22.04-arm # Change from 'ubuntu-latest'
 
   src-linux64_nowallet:
     name: linux64_nowallet-build
@@ -213,7 +213,7 @@ jobs:
       depends-key: ${{ needs.depends-linux64_multiprocess.outputs.key }}
       depends-host: ${{ needs.depends-linux64_multiprocess.outputs.host }}
       depends-dep-opts: ${{ needs.depends-linux64_multiprocess.outputs.dep-opts }}
-      runs-on: ubuntu-24.04-arm
+      runs-on: ubuntu-22.04-arm # Change from 'ubuntu-latest'
 
   src-linux64_ubsan:
     name: linux64_ubsan-build
@@ -266,7 +266,7 @@ jobs:
       bundle-key: ${{ needs.src-linux64_multiprocess.outputs.key }}
       build-target: linux64_multiprocess
       container-path: ${{ needs.container-slim.outputs.path }}
-      runs-on: ubuntu-24.04-arm
+      runs-on: ubuntu-22.04-arm # Change from 'ubuntu-latest'
 
   test-linux64_nowallet:
     name: linux64_nowallet-test
@@ -294,7 +294,7 @@ jobs:
       bundle-key: ${{ needs.src-linux64_tsan.outputs.key }}
       build-target: linux64_tsan
       container-path: ${{ needs.container-slim.outputs.path }}
-      runs-on: ubuntu-24.04-arm
+      runs-on: ubuntu-22.04-arm # Change from 'ubuntu-latest'
 
   test-linux64_ubsan:
     name: linux64_ubsan-test
