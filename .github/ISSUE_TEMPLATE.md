@@ -2,9 +2,9 @@
 
 This issue tracker is only for technical issues related to GoByte Core.
 
-General GoByte questions and/or support requests and are best directed to the [GoByte Network Reddit](https://www.reddit.com/r/gobytenewtork/).
+General GoByte questions and/or support requests and are best directed to the [GoByte Reddit](https://www.reddit.com/r/gobytenetwork/).
 
-To report critical security issues, email infosec@gobyte.network and/or see the GOBYTE bug bounty program on [Bugcrowd](https://bugcrowd.com/gobytenetwork) instead of creating Github issues.
+To report critical security issues, email infosec@gobyte.network and/or see the GOBYTE bug bounty program on [Bugcrowd](https://bugcrowd.com/gobytecoin) instead of creating Github issues.
 
 ### Describe the issue
 
@@ -39,6 +39,8 @@ List the version number/commit ID, and if it is an official binary, self compile
 - RAM:
 - Disk size:
 - Disk Type (HD/SDD):
+
+### For the GUI-related issue on Linux provide names and versions of a distro, a desktop environment and a graphical shell (if relevant).
 
 ### Any extra information that might be useful in the debugging process.
 
