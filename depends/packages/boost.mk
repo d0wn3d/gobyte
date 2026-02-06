@@ -34,7 +34,10 @@ define $(package)_config_cmds
 endef
 
 define $(package)_build_cmds
-  ./b2 -d2 -j2 -d1 --prefix=$($(package)_staging_prefix_dir) $($(package)_config_opts) stage
+  ./b2 -d2 -j2 -d1 --prefix=$($(package)_staging_prefix_dir) $($(package)_config_opts) \
+  cxxflags="$($(package)_cxxflags) $($(package)_cppflags)" \
+  linkflags="$($(package)_ldflags)" \
+  stage
 endef
 
 define $(package)_stage_cmds
