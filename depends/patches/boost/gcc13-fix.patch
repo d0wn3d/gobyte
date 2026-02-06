@@ -1,3 +1,14 @@
+--- a/boost/concept/usage.hpp
++++ b/boost/concept/usage.hpp
+@@ -13,7 +13,7 @@
+
+     template <class Model>
+     struct usage_requirements {
+-        ~usage_requirements() { ((Model*)0)->~Model(); }
++        ~usage_requirements() { Model* mp = 0; if (mp) mp->~Model(); }
+     };
+
+ #  if BOOST_WORKAROUND(__GNUC__, <= 3)
 --- a/boost/thread/pthread/thread_data.hpp
 +++ b/boost/thread/pthread/thread_data.hpp
 @@ -10,6 +10,7 @@
