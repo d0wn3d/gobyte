@@ -5,7 +5,7 @@ run using Python 3 but are compatible with Python 2.
 
 ## Step 0: Install gobyte_hash
 
-https://github.com/gobytecoin/gobyte_hash
+https://github.com/gobytecoin/gobyte_hash or https://github.com/D0WN3D/gobyte_hash
 
 ## Step 1: Download hash list
 
