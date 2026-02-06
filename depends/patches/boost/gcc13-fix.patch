@@ -1,0 +1,9 @@
+--- a/boost/thread/pthread/thread_data.hpp
++++ b/boost/thread/pthread/thread_data.hpp
+@@ -10,6 +10,7 @@
+ #ifndef BOOST_THREAD_PTHREAD_THREAD_DATA_HPP
+ #define BOOST_THREAD_PTHREAD_THREAD_DATA_HPP
+
++#include <limits>
+ #include <boost/thread/detail/config.hpp>
+ #include <boost/thread/detail/thread_heap_alloc.hpp>
