@@ -34,7 +34,18 @@ unsigned int cpu_vec_exts(void);
 
 #if (__cplusplus)
 }
-#else
+#endif
+
+/* These must be outside the C++ check to be visible, but guarded to prevent the error */
+#ifndef ROTL32
+#define ROTL32(a,b) (((a) << (b)) | ((a) >> (32 - b)))
+#endif
+
+#ifndef ROTR32
+#define ROTR32(a,b) (((a) >> (b)) | ((a) << (32 - b)))
+#endif
+
+#if !(__cplusplus)
 
 typedef unsigned long long ullong;
 typedef signed long long llong;
@@ -53,9 +64,6 @@ typedef unsigned char uchar;
 #define DIGEST_SIZE 32
 
 typedef uchar hash_digest[DIGEST_SIZE];
-
-#define ROTL32(a,b) (((a) << (b)) | ((a) >> (32 - b)))
-#define ROTR32(a,b) (((a) >> (b)) | ((a) << (32 - b)))
 
 #define U8TO32_BE(p) \
     (((uint)((p)[0]) << 24) | ((uint)((p)[1]) << 16) | \
