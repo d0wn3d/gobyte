@@ -5,7 +5,7 @@ $(package)_download_path=https://github.com/D0WN3D/bls-signatures/archive
 $(package)_download_file=$($(package)_version).tar.gz
 $(package)_file_name=$(package)-$($(package)_download_file)
 $(package)_build_subdir=build
-$(package)_sha256_hash=276c8573104e5f18bb5b9fd3ffd49585dda5ba5f6de2de74759dda8ca5a9deac
+$(package)_sha256_hash=0288918879a3b3070dbb538914fc1708fe36747a3c90426f3339a21ef2e0d423
 $(package)_dependencies=gmp cmake
 
 $(package)_relic_version=3a23142be0a5510a3aa93cd6c76fc59d3fc732a5
