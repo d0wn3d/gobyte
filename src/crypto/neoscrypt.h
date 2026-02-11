@@ -1,13 +1,9 @@
-#ifndef NEOSCRYPT_H
-#define NEOSCRYPT_H
-
-#ifdef __cplusplus
+#if (__cplusplus)
 extern "C" {
 #endif
 
-/* --- NEOSCRYPT FUNCTIONS (Visible to both C and C++) --- */
-
-void neoscrypt(const unsigned char *password, unsigned char *output, unsigned int profile);
+void neoscrypt(const unsigned char *password, unsigned char *output,
+  unsigned int profile);
 
 void neoscrypt_blake2s(const void *input, const unsigned int input_size,
   const void *key, const unsigned char key_size,
@@ -36,11 +32,9 @@ void neoscrypt_fastkdf_4way(const unsigned char *password,
 
 unsigned int cpu_vec_exts(void);
 
-#ifdef __cplusplus
-} // This closes the extern "C" container
-#endif
-
-/* --- COMMON DEFINITIONS (Mandatory for both C and C++) --- */
+#if (__cplusplus)
+}
+#else
 
 typedef unsigned long long ullong;
 typedef signed long long llong;
@@ -75,4 +69,4 @@ typedef uchar hash_digest[DIGEST_SIZE];
     U32TO8_BE((p),     (uint)((v) >> 32)); \
     U32TO8_BE((p) + 4, (uint)((v)      ));
 
-#endif // NEOSCRYPT_H
+#endif
