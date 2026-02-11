@@ -83,9 +83,9 @@ bitcoin_bench_clean : FORCE
 bench/data/%.raw.h: bench/data/%.raw
 	@$(MKDIR_P) $(@D)
 	@{ \
-	 echo "namespace raw_bench{" && \
-	 echo "static unsigned const char $(*F)[] = {" && \
-	 $(HEXDUMP) -v -e '8/1 "0x%02x, "' -e '"\n"' $< | $(SED) -e 's/0x  ,//g' && \
-	 echo "};};"; \
+	echo "namespace raw_bench{" && \
+	echo "static unsigned const char $(*F)[] = {" && \
+	$(HEXDUMP) -v -e '8/1 "0x%02x, "' -e '"\n"' $< | $(SED) -e 's/0x  ,//g' && \
+	echo "};};"; \
 	} > "$@.new" && mv -f "$@.new" "$@"
 	@echo "Generated $@"
