@@ -94,6 +94,11 @@ void static inline DeleteLock(void* cs) {}
 class CCriticalSection : public AnnotatedMixin<std::recursive_mutex>
 {
 public:
+    // Add these three lines to satisfy the modern compiler
+    void lock() { std::recursive_mutex::lock(); }
+    void unlock() { std::recursive_mutex::unlock(); }
+    bool try_lock() { return std::recursive_mutex::try_lock(); }
+
     ~CCriticalSection() {
         DeleteLock((void*)this);
     }
