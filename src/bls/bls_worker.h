@@ -4,7 +4,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #ifndef GOBYTE_CRYPTO_BLS_WORKER_H
-#define GOBYTECRYPTO_BLS_WORKER_H
+#define GOBYTE_CRYPTO_BLS_WORKER_H
 
 #include <bls/bls.h>
 
