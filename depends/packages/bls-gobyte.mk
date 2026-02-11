@@ -1,6 +1,7 @@
 package=bls-gobyte
 $(package)_version=1.1.0
-$(package)_download_path=https://github.com/gobytecoin/bls-signatures/archive
+#TODO: update to upstream when available
+$(package)_download_path=https://github.com/D0WN3D/bls-signatures/archive
 $(package)_download_file=$($(package)_version).tar.gz
 $(package)_file_name=$(package)-$($(package)_download_file)
 $(package)_build_subdir=build
