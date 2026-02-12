@@ -495,7 +495,6 @@ public:
 
         vSporkAddresses = {
             "GX324HN5jrHLZg1oV1QLsTeuFsPBzhAXNd",
-            "GS7REhk1msjCJsmcUdSdpgYBiiyjA1eM6Z",
         };
         nMinSporkKeys = 1;
         fBIP9CheckMasternodesUpgraded = true;
@@ -705,7 +704,6 @@ public:
 
         vSporkAddresses = {
             "nJtKPFc1ERZx8kwEtDPLnJZzScC5qiCGSB",
-            "nKxideDexymYFs3yxMSuJHLN3sNF3koezn",
         };
         nMinSporkKeys = 1;
         fBIP9CheckMasternodesUpgraded = true;
@@ -889,7 +887,6 @@ public:
 
         vSporkAddresses = {
             "nJtKPFc1ERZx8kwEtDPLnJZzScC5qiCGSB",
-            "nKxideDexymYFs3yxMSuJHLN3sNF3koezn",
         };
         nMinSporkKeys = 1;
         // devnets are started with no blocks and no MN, so we can't check for upgraded MN (as there are none)
@@ -1019,7 +1016,6 @@ public:
         // privKey: cP4EKFyJsHT39LDqgdcB43Y3YXjNyjb5Fuas1GQSeAtjnZWmZEQK
         vSporkAddresses = {
             "nJtKPFc1ERZx8kwEtDPLnJZzScC5qiCGSB",
-            "nKxideDexymYFs3yxMSuJHLN3sNF3koezn",
         };
         nMinSporkKeys = 1;
         // regtest usually has no masternodes in most tests, so don't check for upgraged MNs
