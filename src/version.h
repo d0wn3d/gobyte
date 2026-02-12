@@ -18,16 +18,16 @@ static const int PROTOCOL_VERSION = 70219;
 static const int INIT_PROTO_VERSION = 209;
 
 //! disconnect from peers older than this proto version
-static const int MIN_PEER_PROTO_VERSION = 70210;
+static const int MIN_PEER_PROTO_VERSION = 70208;
 
 //! minimum proto version of masternode to accept in DKGs
-static const int MIN_MASTERNODE_PROTO_VERSION = 70219;
+static const int MIN_MASTERNODE_PROTO_VERSION = 70210;
 
 //! minimum proto version for governance sync and messages
-static const int MIN_GOVERNANCE_PEER_PROTO_VERSION = 70210;
+static const int MIN_GOVERNANCE_PEER_PROTO_VERSION = 70208;
 
 //! minimum proto version to broadcast governance messages from banned masternodes
-static const int GOVERNANCE_POSE_BANNED_VOTES_VERSION = 70215;
+static const int GOVERNANCE_POSE_BANNED_VOTES_VERSION = 70208;
 
 //! nTime field added to CAddress, starting with this version;
 //! if possible, avoid requesting addresses nodes older than this
@@ -44,7 +44,7 @@ static const int SENDDSQUEUE_PROTO_VERSION = 70214;
 static const int MIN_COINJOIN_PEER_PROTO_VERSION = 70213;
 
 //! protocol version is included in MNAUTH starting with this version
-static const int MNAUTH_NODE_VER_VERSION = 70218;
+static const int MNAUTH_NODE_VER_VERSION = 70220; //TODO: we can remove this once everyone is past this version
 
 //! introduction of QGETDATA/QDATA messages
 static const int LLMQ_DATA_MESSAGES_VERSION = 70219;
