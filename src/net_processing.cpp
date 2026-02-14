@@ -440,14 +440,9 @@ void PushNodeVersion(CNode *pnode, CConnman* connman, int64_t nTime)
     if (params.NetworkIDString() != CBaseChainParams::MAIN && gArgs.IsArgSet("-pushversion")) {
         nProtocolVersion = gArgs.GetArg("-pushversion", PROTOCOL_VERSION);
     }
-//TODO: OLD_VERSION -- Enable when >60% of the network is on 0.17.x
-//    connman->PushMessage(pnode, CNetMsgMaker(INIT_PROTO_VERSION).Make(NetMsgType::VERSION, nProtocolVersion, (uint64_t)nLocalNodeServices, nTime, addrYou, addrMe,
-//            nonce, strSubVersion, nNodeStartingHeight, ::fRelayTxes, mnauthChallenge, pnode->m_masternode_connection));
 
-    //TODO: NEW_VERSION -- Remove when >60% of the network is on 0.17.x
-    // FIXED: Stripped mnauthChallenge and m_masternode_connection to match 0.16.x message format
     connman->PushMessage(pnode, CNetMsgMaker(INIT_PROTO_VERSION).Make(NetMsgType::VERSION, nProtocolVersion, (uint64_t)nLocalNodeServices, nTime, addrYou, addrMe,
-            nonce, strSubVersion, nNodeStartingHeight, ::fRelayTxes));
+            nonce, strSubVersion, nNodeStartingHeight, ::fRelayTxes, mnauthChallenge, pnode->m_masternode_connection));
 
     if (fLogIPs) {
         LogPrint(BCLog::NET, "send version message: version %d, blocks=%d, us=%s, them=%s, peer=%d\n", nProtocolVersion, nNodeStartingHeight, addrMe.ToString(), addrYou.ToString(), nodeid);
@@ -2205,10 +2200,10 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr
         }
         if (!vRecv.empty())
             vRecv >> fRelay;
-        // if (!vRecv.empty()) {
-        //     LOCK(pfrom->cs_mnauth);
-        //     vRecv >> pfrom->receivedMNAuthChallenge;
-        // } TODO: remove this in v0.17+ as it's no longer sent by any client
+        if (!vRecv.empty()) {
+            LOCK(pfrom->cs_mnauth);
+            vRecv >> pfrom->receivedMNAuthChallenge;
+        }
         if (!vRecv.empty()) {
             bool fOtherMasternode = false;
             vRecv >> fOtherMasternode;
@@ -2224,14 +2219,6 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr
                 }
             }
         }
-        // --- FIXED: Read MNAuth Challenge LAST (Conditional for 0.17+ nodes) ---
-        // 0.16 nodes send only 1 byte for the MN flag, leaving the buffer empty here.
-        // 0.17 nodes send an additional 32 bytes for the challenge. SEE ABOVE TODO.
-        if (vRecv.size() >= 32) {
-            LOCK(pfrom->cs_mnauth);
-            vRecv >> pfrom->receivedMNAuthChallenge;
-        }
-
         // Disconnect if we connected to ourself
         if (pfrom->fInbound && !connman->CheckIncomingNonce(nNonce))
         {

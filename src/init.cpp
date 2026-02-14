@@ -1,7 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2015 The Bitcoin Core developers
-// Copyright (c) 2014-2020 The Dash Core developers
-// Copyright (c) 2017-2026 The GoByte Core developers
+// Copyright (c) 2014-2021 The Dash Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -663,7 +662,7 @@ std::string LicenseInfo()
     const std::string URL_SOURCE_CODE = "<https://github.com/gobytecoin/gobyte>";
     const std::string URL_WEBSITE = "<https://gobyte.network>";
 
-    return CopyrightHolders(_("Copyright (C)"), 2026, COPYRIGHT_YEAR) + "\n" +
+    return CopyrightHolders(_("Copyright (C)"), 2014, COPYRIGHT_YEAR) + "\n" +
            "\n" +
            strprintf(_("Please contribute if you find %s useful. "
                        "Visit %s for further information about the software."),
