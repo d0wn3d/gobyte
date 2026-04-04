@@ -42,6 +42,7 @@ define $(package)_set_vars
   $(package)_config_opts_darwin+= -DCMAKE_C_COMPILER_TARGET=x86_64-apple-darwin
   $(package)_config_opts_darwin+= -DCMAKE_CXX_COMPILER_TARGET=x86_64-apple-darwin
   $(package)_config_opts_darwin+= -DCMAKE_ASM_COMPILER_TARGET=x86_64-apple-darwin
+  $(package)_config_opts_darwin+= -DARITH=easy
   $(package)_config_opts_mingw32=-DOPSYS=WINDOWS -DCMAKE_SYSTEM_NAME=Windows -DCMAKE_SHARED_LIBRARY_LINK_C_FLAGS=""
   $(package)_config_opts_i686+= -DWSIZE=32
   $(package)_config_opts_x86_64+= -DWSIZE=64
