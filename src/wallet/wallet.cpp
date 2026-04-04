@@ -2274,7 +2274,7 @@ bool CWalletTx::RelayWalletTransaction(CConnman* connman)
     return false;
 }
 
-std::set<uint256> CWalletTx::GetConflicts() const
+std::set<uint256> CWalletTx::GetConflicts() const EXCLUSIVE_LOCKS_REQUIRED(pwallet->cs_wallet)
 {
     std::set<uint256> result;
     if (pwallet != nullptr) {
@@ -3981,7 +3981,6 @@ DBErrors CWallet::LoadWallet(bool& fFirstRunRet)
     }
 
     {
-        LOCK2(cs_main, cs_wallet);
         for (auto& pair : mapWallet) {
             for (unsigned int i = 0; i < pair.second.tx->vout.size(); ++i) {
                 if (IsMine(pair.second.tx->vout[i]) && !IsSpent(pair.first, i)) {
