@@ -827,7 +827,7 @@ void CTxMemPool::removeConflicts(const CTransaction &tx)
     }
 }
 
-void CTxMemPool::removeProTxPubKeyConflicts(const CTransaction &tx, const CKeyID &keyId)
+void CTxMemPool::removeProTxPubKeyConflicts(const CTransaction &tx, const CKeyID &keyId) EXCLUSIVE_LOCKS_REQUIRED(cs)
 {
     if (mapProTxPubKeyIDs.count(keyId)) {
         uint256 conflictHash = mapProTxPubKeyIDs[keyId];
@@ -837,7 +837,7 @@ void CTxMemPool::removeProTxPubKeyConflicts(const CTransaction &tx, const CKeyID
     }
 }
 
-void CTxMemPool::removeProTxPubKeyConflicts(const CTransaction &tx, const CBLSPublicKey &pubKey)
+void CTxMemPool::removeProTxPubKeyConflicts(const CTransaction &tx, const CBLSPublicKey &pubKey) EXCLUSIVE_LOCKS_REQUIRED(cs)
 {
     if (mapProTxBlsPubKeyHashes.count(pubKey.GetHash())) {
         uint256 conflictHash = mapProTxBlsPubKeyHashes[pubKey.GetHash()];
@@ -847,7 +847,7 @@ void CTxMemPool::removeProTxPubKeyConflicts(const CTransaction &tx, const CBLSPu
     }
 }
 
-void CTxMemPool::removeProTxCollateralConflicts(const CTransaction &tx, const COutPoint &collateralOutpoint)
+void CTxMemPool::removeProTxCollateralConflicts(const CTransaction &tx, const COutPoint &collateralOutpoint) EXCLUSIVE_LOCKS_REQUIRED(cs)
 {
     if (mapProTxCollaterals.count(collateralOutpoint)) {
         uint256 conflictHash = mapProTxCollaterals[collateralOutpoint];
@@ -857,10 +857,11 @@ void CTxMemPool::removeProTxCollateralConflicts(const CTransaction &tx, const CO
     }
 }
 
-void CTxMemPool::removeProTxSpentCollateralConflicts(const CTransaction &tx)
+void CTxMemPool::removeProTxSpentCollateralConflicts(const CTransaction &tx) EXCLUSIVE_LOCKS_REQUIRED(cs)
 {
     // Remove TXs that refer to a MN for which the collateral was spent
     auto removeSpentCollateralConflict = [&](const uint256& proTxHash) {
+        AssertLockHeld(cs);
         // Can't use equal_range here as every call to removeRecursive might invalidate iterators
         while (true) {
             auto it = mapProTxRefs.find(proTxHash);
@@ -893,7 +894,7 @@ void CTxMemPool::removeProTxSpentCollateralConflicts(const CTransaction &tx)
     }
 }
 
-void CTxMemPool::removeProTxKeyChangedConflicts(const CTransaction &tx, const uint256& proTxHash, const uint256& newKeyHash)
+void CTxMemPool::removeProTxKeyChangedConflicts(const CTransaction &tx, const uint256& proTxHash, const uint256& newKeyHash) EXCLUSIVE_LOCKS_REQUIRED(cs)
 {
     std::set<uint256> conflictingTxs;
     for (auto its = mapProTxRefs.equal_range(proTxHash); its.first != its.second; ++its.first) {
@@ -911,7 +912,7 @@ void CTxMemPool::removeProTxKeyChangedConflicts(const CTransaction &tx, const ui
     }
 }
 
-void CTxMemPool::removeProTxConflicts(const CTransaction &tx)
+void CTxMemPool::removeProTxConflicts(const CTransaction &tx) EXCLUSIVE_LOCKS_REQUIRED(cs)
 {
     removeProTxSpentCollateralConflicts(tx);
 
@@ -1250,6 +1251,7 @@ bool CTxMemPool::existsProviderTxConflict(const CTransaction &tx) const {
     LOCK(cs);
 
     auto hasKeyChangeInMempool = [&](const uint256& proTxHash) {
+        AssertLockHeld(cs);
         for (auto its = mapProTxRefs.equal_range(proTxHash); its.first != its.second; ++its.first) {
             auto txit = mapTx.find(its.first->second);
             if (txit == mapTx.end()) {

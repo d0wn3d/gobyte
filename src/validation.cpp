@@ -190,7 +190,7 @@ public:
 
     bool ReplayBlocks(const CChainParams& params, CCoinsView* view);
     bool LoadGenesisBlock(const CChainParams& chainparams);
-    bool AddGenesisBlock(const CChainParams& chainparams, const CBlock& block, CValidationState& state);
+    bool AddGenesisBlock(const CChainParams& chainparams, const CBlock& block, CValidationState& state) EXCLUSIVE_LOCKS_REQUIRED(cs_main);
 
     void PruneBlockIndexCandidates();
 
@@ -2285,7 +2285,6 @@ bool CChainState::ConnectBlock(const CBlock& block, CValidationState& state, CBl
             } else {
                 // The node which relayed this should switch to correct chain.
                 // TODO: relay instantsend data/proof.
-                LOCK(cs_main);
                 return state.DoS(10, error("ConnectBlock(GOBYTE): transaction %s conflicts with transaction lock %s", tx->GetHash().ToString(), conflictLock->txid.ToString()),
                     REJECT_INVALID, "conflict-tx-lock");
             }
@@ -4698,7 +4697,7 @@ bool LoadBlockIndex(const CChainParams& chainparams)
     return true;
 }
 
-bool CChainState::AddGenesisBlock(const CChainParams& chainparams, const CBlock& block, CValidationState& state)
+bool CChainState::AddGenesisBlock(const CChainParams& chainparams, const CBlock& block, CValidationState& state) EXCLUSIVE_LOCKS_REQUIRED(cs_main)
 {
     CDiskBlockPos blockPos = SaveBlockToDisk(block, 0, chainparams, nullptr);
     if (blockPos.IsNull())
