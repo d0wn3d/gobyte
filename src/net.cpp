@@ -1425,9 +1425,12 @@ void CConnman::CalculateNumConnectionsChangedStats()
     mapRecvBytesMsgStats[NET_MESSAGE_COMMAND_OTHER] = 0;
     mapSentBytesMsgStats[NET_MESSAGE_COMMAND_OTHER] = 0;
     LOCK(cs_vNodes);
-    for (const CNode* pnode : vNodes) {
-        for (const mapMsgCmdSize::value_type& i : pnode->mapRecvBytesPerMsgCmd)
-            mapRecvBytesMsgStats[i.first] += i.second;
+    for (CNode* pnode : vNodes) {
+        {
+            LOCK(pnode->cs_vRecv);
+            for (const mapMsgCmdSize::value_type& i : pnode->mapRecvBytesPerMsgCmd)
+                mapRecvBytesMsgStats[i.first] += i.second;
+        }
         for (const mapMsgCmdSize::value_type& i : pnode->mapSendBytesPerMsgCmd)
             mapSentBytesMsgStats[i.first] += i.second;
         if (pnode->fClient)
@@ -3289,6 +3292,7 @@ void CConnman::Stop()
     for (CNode* pnode : vNodesDisconnected) {
         DeleteNode(pnode);
     }
+    LOCK(cs_vNodes);
     vNodes.clear();
     mapSocketToNode.clear();
     mapReceivableNodes.clear();
